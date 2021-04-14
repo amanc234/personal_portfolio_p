@@ -1,0 +1,17 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+    <style>
+       h1 {text-align: center;}
+       h3 {text-align: center;}
+    </style>
+</head>
+<body>
+<h1>Blog</h1>
+<h3>Aman was written {{ projects.count }} blog</h3>
+{% for project in projects %}
+<a href="{% url 'blog:detail' project.id %}"><h2>{{ project.title }}</h2></a>
+<p>{{ project.date|date:'M d Y' }}</p>
+<p>{{ project.description|truncatechars:100 }}</p>
+{% endfor %}
+</body>
+{% endblock %}
